@@ -31,7 +31,8 @@ export class Randomizer {
 
     private static getRandomOrderItem(): OrderItem{
         const randomIndex = Math.floor(Math.random() * this.getOrderItems().length);
-        return this.getOrderItems()[randomIndex];
+        const item = this.getOrderItems()[randomIndex];
+        return item;
     }
 
 
