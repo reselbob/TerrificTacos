@@ -16,5 +16,5 @@ npm start
 Running a workflow
 
 ```bash
- curl -X POST -H "Content-Type: application/json" -d '{"timeStamp":null,"name":"orderSubmitted","order":{"_orderItems":[{"description":"Tamale","price":3,"quantity":9,"total":35}],"_customer":{"firstName":"Kaylee","lastName":"Lang","email":"Kaylee.Lang@email.com"}},"restaurant":"Tommys Taco"}' http://localhost:3000/signal
+ curl -X POST -H "Content-Type: application/json" -d '{"timeStamp":null,"name":"orderSubmitted","order":{"_orderItems":[{"description":"Tamale","price":3.19,"quantity":9}],"_customer":{"firstName":"Kaylee","lastName":"Lang","email":"Kaylee.Lang@email.com"}},"restaurant":"Terrific Tacos"}' http://localhost:3000/signal
 ```
