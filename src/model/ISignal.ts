@@ -1,7 +1,7 @@
 import {Order} from "./Order";
-import {Restaurant} from "../Restaurant";
 
 export interface ISignal {
+    id: string | null;
     timeStamp: Date | null;
     name: string;
     restaurant: string;

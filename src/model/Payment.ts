@@ -2,6 +2,6 @@ import {CreditCard} from "./CreditCard";
 
 
 export class Payment {
-    constructor(readonly creditcard: CreditCard, readonly amount: number ) {
+    constructor(readonly creditCard: CreditCard, readonly amount: number ) {
     }
 }

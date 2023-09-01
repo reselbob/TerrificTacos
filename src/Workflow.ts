@@ -1,9 +1,12 @@
 import {ISignal} from "./model/ISignal";
 import {logger} from "./logger"
+import {Cook} from "./actor/Cook";
+import {Waiter} from "./actor/Waiter";
+import {Cashier} from "./actor/Cashier";
 
-export class Workflow{
-    public static process(signal : ISignal) : void {
-        switch(signal.name.toUpperCase()){
+export class Workflow {
+    public static process(signal: ISignal): void {
+        switch (signal.name.toUpperCase()) {
             case "ORDERSUBMITTED":
                 this.orderSubmittedHandler(signal);
                 break;
@@ -14,7 +17,7 @@ export class Workflow{
                 this.orderReadyHandler(signal);
                 break;
             case "ORDERSERVED":
-               this.orderServedHandler(signal);
+                this.orderServedHandler(signal);
                 break;
             case "PAYMENTSTARTED":
                 this.paymentStartedHandler(signal);
@@ -26,28 +29,32 @@ export class Workflow{
         }
     }
 
-    private static orderSubmittedHandler(signal : ISignal) : void {
-         logger.info(JSON.stringify({signalName: signal.name}));
+    private static orderSubmittedHandler(signal: ISignal): void {
+        const cook = new Cook();
+        cook.process(signal);
     }
 
-    private static orderStartedHandler(signal : ISignal) : void {
-         logger.info(JSON.stringify({signalName: signal.name}));
+    private static orderStartedHandler(signal: ISignal): void {
+        logger.info(`The order ${JSON.stringify(signal.order)} as started to be be made.`);
     }
 
-    private static orderReadyHandler(signal : ISignal) : void {
-         logger.info(JSON.stringify({signalName: signal.name}));
+    private static orderReadyHandler(signal: ISignal): void {
+        logger.info(JSON.stringify({signalName: signal.name}));
+        const waiter = new Waiter();
+        waiter.process(signal);
     }
 
-    private static orderServedHandler(signal : ISignal) : void {
-         logger.info(JSON.stringify({signalName: signal.name}));
+    private static orderServedHandler(signal: ISignal): void {
+        logger.info(JSON.stringify({signalName: signal.name}));
     }
 
-    private static paymentStartedHandler(signal : ISignal) : void {
-         logger.info(JSON.stringify({signalName: signal.name}));
+    private static paymentStartedHandler(signal: ISignal): void {
+        const cashier = new Cashier();
+        cashier.process(signal);
     }
 
-    private static paymentCompletedHandler(signal : ISignal) : void {
-         logger.info(JSON.stringify({signalName: signal.name}));
+    private static paymentCompletedHandler(signal: ISignal): void {
+        logger.info(`The customer ${JSON.stringify(signal.order.customer)} has paid. The are free to leave ${signal.restaurant}`);
     }
 
 }
