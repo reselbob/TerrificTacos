@@ -1,4 +1,4 @@
-# TommysTacos
+# Terrific Tacos
 A project that demonstrates the concepts behind event sourcing written in TypeScript
 
 Install the packages
