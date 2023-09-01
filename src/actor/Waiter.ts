@@ -4,6 +4,7 @@ import {Actor} from "./Actor";
 import {CreditCard} from "../model/CreditCard";
 import {Randomizer} from "../helper/Randomizer";
 import {Payment} from "../model/Payment";
+import {OrderItem} from "../model/OrderItem";
 
 export class Waiter extends Actor{
     // @ts-ignore
@@ -24,7 +25,9 @@ export class Waiter extends Actor{
 
         let grandTotal = 0;
         signal.order.orderItems.forEach(item => {
-            grandTotal += item.total;
+            //convert the item for a formal OrderItem to pick up the total logic
+            const orderItem = new OrderItem(item.description, item.price, item.quantity)
+            grandTotal += orderItem.total;
         })
         const creditCard = Randomizer.getCreditCard(signal.order.customer);
         const payment = new Payment(creditCard,grandTotal);

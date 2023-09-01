@@ -4,33 +4,21 @@ import {Payment} from "./Payment";
 import { v4 as uuidv4 } from 'uuid';
 
 export class Order {
-    private readonly _orderItems: OrderItem[]
-    private readonly _customer: Customer;
-    private readonly _id: string;
+    public readonly orderItems: OrderItem[]
+    public readonly customer: Customer;
+    public id: string;
     // @ts-ignore
     private _payment: Payment;
 
 
     constructor(customer: Customer) {
-        this._orderItems = new Array<OrderItem>()
-        this._customer = customer;
-        this._id = uuidv4();
+        this.orderItems = new Array<OrderItem>()
+        this.customer = customer;
+        this.id = uuidv4();
     }
 
     public add(orderItem: OrderItem): void {
-        this._orderItems.push(orderItem);
-    }
-
-
-    get id(): string {
-        return this._id;
-    }
-
-    public get orderItems(): OrderItem[] {
-        return this._orderItems;
-    }
-    public get customer(): Customer {
-        return this._customer;
+        this.orderItems.push(orderItem);
     }
 
     public get payment(): Payment {

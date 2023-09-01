@@ -16,11 +16,22 @@ const port = process.env.MESSAGE_TARGET_PORT;
 app.use(bodyParser.json());
 
 app.post('/signal', (req: Request, res: Response) => {
-    const signal = req.body;
+    const signal : ISignal = req.body;
     if(signal.timeStamp === null) signal.timeStamp = new Date();
     if(signal.id === null) signal.id = uuidv4();
-    persistSignal(signal);
-    Workflow.process(signal);
+    if(signal.order.id === null) signal.order.id = uuidv4();
+
+    const adjustedSignal: ISignal = {
+        id: signal.id || uuidv4(),
+        name: signal.name,
+        timeStamp: signal.timeStamp || new Date(),
+        order: signal.order,
+        restaurant: signal.restaurant
+    }
+    adjustedSignal.order.id = signal.order.id || uuidv4();
+
+    persistSignal(adjustedSignal);
+    Workflow.process(adjustedSignal);
     res.status(200).json({ message: 'Data received successfully', data: signal });
 });
 
