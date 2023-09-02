@@ -1,5 +1,5 @@
 # Terrific Tacos
-A project that demonstrates the concepts behind event sourcing written in TypeScript
+A project, written in TypeScript, demonstrates the concepts behind event sourcing. 
 
 # Install the packages
 

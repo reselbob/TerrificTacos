@@ -1,7 +1,5 @@
 import {ISignal} from "./model/ISignal";
 import {logger} from "./logger"
-import {Randomizer} from "./helper/Randomizer";
-import {Payment} from "./model/Payment";
 import {OrderItem} from "./model/OrderItem";
 
 export class Workflow {
@@ -70,26 +68,19 @@ export class Workflow {
     }
 
     private static paymentStartedHandler(signal: ISignal): ISignal {
-        const customer = signal.order.customer;
-        const creditCard = Randomizer.getCreditCard(customer);
-        logger.info(`The order ${JSON.stringify(signal.order)} for restaurant ${signal.restaurant} has started payment process using credit card ${JSON.stringify(creditCard)}.`);
-
         let grandTotal = 0;
         signal.order.orderItems.forEach(item => {
             //convert the item for a formal OrderItem to pick up the total logic
             const orderItem = new OrderItem(item.description, item.price, item.quantity)
             grandTotal += orderItem.total;
         })
+        logger.info(`The order ${JSON.stringify(signal.order)} for restaurant ${signal.restaurant} for the amount of ${grandTotal} has started payment process using credit card ${JSON.stringify(signal.order.creditCard)}.`);
 
-        const payment = new Payment(creditCard, grandTotal);
-
-        const adjustedOrder = signal.order;
-        adjustedOrder.payment = payment;
         return {
             id: null,
-            timeStamp: null,
             name: "paymentCompleted",
-            order: adjustedOrder,
+            timeStamp: null,
+            order: signal.order,
             restaurant: signal.restaurant
         };
     }

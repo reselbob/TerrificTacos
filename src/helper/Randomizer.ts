@@ -6,7 +6,6 @@ import {OrderItem} from "../model/OrderItem";
 import {ISignal} from "../model/ISignal";
 
 export class Randomizer {
-
     public static getCustomer(): Customer {
         const firstName = faker.name.firstName();
         const lastName = faker.name.lastName();
@@ -15,10 +14,12 @@ export class Randomizer {
     }
 
     public static getOrder(customer: Customer, numberOfItems: number): Order {
-        const order  = new Order(customer);
+        const order  = new Order(customer, Randomizer.getCreditCard(customer));
+
         for(let i = 0; i < numberOfItems; i++){
             order.add(this.getRandomOrderItem());
         }
+
         return order;
     }
 

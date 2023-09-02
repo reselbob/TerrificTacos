@@ -6,9 +6,10 @@ import {IWorkflowConfig} from "./model/IWorkflowConfig";
 
 async function main() {
 // make a workflow for restaurant Terrific Taco Number 1
+    const order = Randomizer.getOrder(Randomizer.getCustomer(), 2)
     let config: IWorkflowConfig = {
         workflowId: uuidv4(),
-        order: Randomizer.getOrder(Randomizer.getCustomer(), 2),
+        order: order,
         restaurant: "Terrific Taco Number 1"
     }
     let controller = new WorkflowController(config);
