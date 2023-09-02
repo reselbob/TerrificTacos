@@ -2,7 +2,6 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../src/WebServer';
 import {Randomizer} from "../src/helper/Randomizer";
-import {IEvent} from "../src/model/IEvent";
 import {ISignal} from "../src/model/ISignal";
 
 chai.use(chaiHttp);
@@ -15,6 +14,7 @@ describe('POST /api/data', () => {
 
         const order = Randomizer.getOrder(customer, 1);
         const signal: ISignal = {
+            id: null,
             timeStamp: null,
             name: "orderSubmitted",
             order: order,
