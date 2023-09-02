@@ -30,14 +30,14 @@ export class Randomizer {
         return this.getRandomOrderItem();
     }
 
-    public static getRandomOrderSubmittedSignal(numberOfItemsInOrder: number): ISignal{
+    public static getRandomOrderSubmittedSignal(numberOfItemsInOrder: number, restaurant: string): ISignal{
         const customer = this.getCustomer();
         const order = this.getOrder(customer, numberOfItemsInOrder);
         const signal: ISignal = {
             id: null,
             timeStamp: null,
             name: "orderSubmitted",
-            restaurant: "Terrific Tacos",
+            restaurant: restaurant,
             order: order,
         }
 

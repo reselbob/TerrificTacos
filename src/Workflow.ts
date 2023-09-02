@@ -1,96 +1,72 @@
 import {ISignal} from "./model/ISignal";
 import {logger} from "./logger"
-import {Cook} from "./actor/Cook";
-import {Waiter} from "./actor/Waiter";
-import {Cashier} from "./actor/Cashier";
-import {CreditCard} from "./model/CreditCard";
 import {Randomizer} from "./helper/Randomizer";
 import {Payment} from "./model/Payment";
 import {OrderItem} from "./model/OrderItem";
-import {Order} from "./model/Order";
 
 export class Workflow {
-    public static process(signal: ISignal): ISignal {
-        let buffer: ISignal = {
-            id: null,
-            name: "buffer",
-            timeStamp: null,
-            order: signal.order,
-            restaurant: "Terrific Tacos"
-        }
+    public static process(signal: ISignal): any {
         switch (signal.name.toUpperCase()) {
             case "ORDERSUBMITTED":
-                buffer = this.orderSubmittedHandler(signal);
-                break;
+                return this.orderSubmittedHandler(signal);
             case "ORDERSTARTED":
-                buffer = this.orderStartedHandler(signal);
-                break;
+                return this.orderStartedHandler(signal);
             case "ORDERREADY":
-                buffer = this.orderReadyHandler(signal);
-                break;
+                return this.orderReadyHandler(signal);
             case "ORDERSERVED":
-                buffer = this.orderServedHandler(signal);
-                break;
+                return this.orderServedHandler(signal);
             case "PAYMENTSTARTED":
-                buffer = this.paymentStartedHandler(signal);
-                break;
+                return this.paymentStartedHandler(signal);
             case "PAYMENTCOMPLETED":
-                buffer = this.paymentCompletedHandler(signal)
-                break;
+                return this.paymentCompletedHandler(signal)
             case "ORDERCLOSED":
-                buffer = this.orderClosedHandler(signal)
-                break;
+                return this.orderClosedHandler(signal)
         }
-        return buffer;
     }
 
     private static orderSubmittedHandler(signal: ISignal): ISignal {
         logger.info(`Order ${signal.order.id} for restaurant ${signal.restaurant} has been submitted.`)
         // return the next signal
-        const nextSignal: ISignal = {
+        return {
             id: null,
             name: "orderStarted",
             timeStamp: null,
             order: signal.order,
-            restaurant: "Terrific Tacos"
-        }
-        return nextSignal;
+            restaurant: signal.restaurant
+        };
     }
 
     private static orderStartedHandler(signal: ISignal): ISignal {
         logger.info(`Order ${signal.order.id} for restaurant ${signal.restaurant} has started to be made.`)
-        const nextSignal: ISignal = {
+        return {
             id: null,
             name: "orderReady",
             timeStamp: null,
             order: signal.order,
-            restaurant: "Terrific Tacos"
-        }
-        return nextSignal;
+            restaurant: signal.restaurant
+        };
     }
 
     private static orderReadyHandler(signal: ISignal): ISignal {
         logger.info(`Order ${signal.order.id} for restaurant ${signal.restaurant} is ready.`)
-        const nextSignal: ISignal = {
+        return {
             id: null,
             name: "orderServed",
             timeStamp: null,
             order: signal.order,
-            restaurant: "Terrific Tacos"
-        }
-        return nextSignal;
+            restaurant: signal.restaurant
+        };
     }
 
     private static orderServedHandler(signal: ISignal): ISignal {
         logger.info(`The order ${JSON.stringify(signal.order)} for restaurant ${signal.restaurant} has been served.`);
-        const nextSignal: ISignal = {
+        return {
             id: null,
             name: "paymentStarted",
             timeStamp: null,
             order: signal.order,
-            restaurant: "Terrific Tacos"
-        }
-        return nextSignal;
+            restaurant: signal.restaurant
+        };
     }
 
     private static paymentStartedHandler(signal: ISignal): ISignal {
@@ -109,39 +85,36 @@ export class Workflow {
 
         const adjustedOrder = signal.order;
         adjustedOrder.payment = payment;
-        const nextSignal: ISignal = {
+        return {
             id: null,
             timeStamp: null,
             name: "paymentCompleted",
             order: adjustedOrder,
             restaurant: signal.restaurant
-        }
-        return nextSignal;
+        };
     }
 
     private static paymentCompletedHandler(signal: ISignal): ISignal {
         logger.info(`The customer ${JSON.stringify(signal.order.customer)} has paid. The customer is free to leave ${signal.restaurant}`);
-        const nextSignal: ISignal = {
+        return {
             id: null,
             name: "orderClosed",
             timeStamp: null,
             order: signal.order,
-            restaurant: "Terrific Tacos"
-        }
-        return nextSignal;
+            restaurant: signal.restaurant
+        };
     }
 
     private static orderClosedHandler(signal: ISignal): ISignal {
         logger.info("Order closed.");
         // Yes, this is no-op because this handler will never be called
-        const nextSignal: ISignal = {
+        return {
             id: null,
             name: "orderClosed",
             timeStamp: null,
             order: signal.order,
-            restaurant: "Terrific Tacos"
-        }
-        return nextSignal;
+            restaurant: signal.restaurant
+        };
     }
 
 }
