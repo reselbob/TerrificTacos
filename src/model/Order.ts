@@ -10,7 +10,6 @@ export class Order {
     // @ts-ignore
     private _payment: Payment;
 
-
     constructor(customer: Customer) {
         this.orderItems = new Array<OrderItem>()
         this.customer = customer;

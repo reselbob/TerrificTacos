@@ -10,7 +10,6 @@ export class WorkflowController{
     private readonly targetUrl: string;
     private readonly order: Order;
     private readonly workflowId: string;
-    private readonly customer: Customer;
     private readonly restaurant: string;
     constructor(config: IWorkflowConfig){
         if (! this.validateJsonObject(config)){
@@ -25,7 +24,6 @@ export class WorkflowController{
 
         this.order = config.order;
         this.workflowId = config.workflowId;
-        this.customer = config.customer;
         this.restaurant = config.restaurant;
     }
 
@@ -45,7 +43,7 @@ export class WorkflowController{
     }
 
     private validateJsonObject(obj: Partial<IWorkflowConfig>): boolean {
-        const keys: (keyof IWorkflowConfig)[] = ['workflowId', 'order', 'customer', 'restaurant'];
+        const keys: (keyof IWorkflowConfig)[] = ['workflowId', 'order', 'restaurant'];
         // Check if all required keys are present
         for (const key of keys) {
             if (!(key in obj)) {
