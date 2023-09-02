@@ -22,7 +22,7 @@ export class Workflow {
             case "PAYMENTSTARTED":
                 this.paymentStartedHandler(signal);
                 break;
-            case "PAYMENTCOMPLETE":
+            case "PAYMENTCOMPLETED":
                 this.paymentCompletedHandler(signal)
                 break;
 
@@ -45,7 +45,7 @@ export class Workflow {
     }
 
     private static orderServedHandler(signal: ISignal): void {
-        logger.info(JSON.stringify({signalName: signal.name}));
+        logger.info(`The order ${JSON.stringify(signal.order)} has been served.`);
     }
 
     private static paymentStartedHandler(signal: ISignal): void {
@@ -54,7 +54,7 @@ export class Workflow {
     }
 
     private static paymentCompletedHandler(signal: ISignal): void {
-        logger.info(`The customer ${JSON.stringify(signal.order.customer)} has paid. The are free to leave ${signal.restaurant}`);
+        logger.info(`The customer ${JSON.stringify(signal.order.customer)} has paid. The customer is free to leave ${signal.restaurant}`);
     }
 
 }

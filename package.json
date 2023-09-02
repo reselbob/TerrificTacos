@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "mocha --require ts-node/register --exit ./test/httpTests.ts",
-    "start": "ts-node src/client.ts"
+    "start": "ts-node src/WebServer.ts",
+    "gensignal": "ts-node src/helper/signalgen.ts"
   },
   "repository": {
     "type": "git",

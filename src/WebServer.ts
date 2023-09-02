@@ -8,7 +8,8 @@ import { v4 as uuidv4 } from 'uuid';
 import path from "path";
 import fs from "fs";
 
-dotenv.config();
+const d = path.join(__dirname, '.env');
+dotenv.config({path: d});
 
 const app: Express = express();
 const port = process.env.MESSAGE_TARGET_PORT;
@@ -41,11 +42,13 @@ app.listen(port, () => {
 
 function persistSignal(signal: ISignal): void {
     const eventsFileSpec = path.join(__dirname, '..', 'data',"events.log");
+
+    if (!fs.existsSync(path.dirname(eventsFileSpec))) {
+        fs.mkdirSync(path.dirname(eventsFileSpec), { recursive: true });
+    }
     fs.appendFile(eventsFileSpec, `${JSON.stringify(signal)}\n`, (err) => {
         if (err) {
             logger.error('Error appending to file:', err);
-        } else {
-            logger.info('JSON event appended to events.log');
         }
     });
 }

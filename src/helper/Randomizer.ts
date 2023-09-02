@@ -3,6 +3,7 @@ import {Customer} from "../model/Customer";
 import {Order} from "../model/Order";
 import {CreditCard} from "../model/CreditCard";
 import {OrderItem} from "../model/OrderItem";
+import {ISignal} from "../model/ISignal";
 
 export class Randomizer {
 
@@ -29,12 +30,25 @@ export class Randomizer {
         return this.getRandomOrderItem();
     }
 
+    public static getRandomOrderSubmittedSignal(numberOfItemsInOrder: number): ISignal{
+        const customer = this.getCustomer();
+        const order = this.getOrder(customer, numberOfItemsInOrder);
+        const signal: ISignal = {
+            id: null,
+            timeStamp: null,
+            name: "orderSubmitted",
+            restaurant: "Terrific Tacos",
+            order: order,
+        }
+
+        return signal;
+    }
+
     private static getRandomOrderItem(): OrderItem{
         const randomIndex = Math.floor(Math.random() * this.getOrderItems().length);
         const item = this.getOrderItems()[randomIndex];
         return item;
     }
-
 
     private static generateMockCreditCardNumber(): string {
         const prefix = "4"; // Visa card prefix

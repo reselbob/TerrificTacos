@@ -5,7 +5,7 @@ import {Actor} from "./Actor";
 export class Cashier extends Actor{
     // @ts-ignore
     process(signal: ISignal): void {
-        logger.info(`I am the ${Cashier.name} and I processing payment for the order ${signal.order.id}.`)
+        logger.info(`I am the ${Cashier.name} and I am processing payment for the order ${signal.order.id}.`)
 
         let newSignal: ISignal = {
             id: null,
