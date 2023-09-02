@@ -32,8 +32,8 @@ app.post('/signal', (req: Request, res: Response) => {
     adjustedSignal.order.id = signal.order.id || uuidv4();
 
     persistSignal(adjustedSignal);
-    Workflow.process(adjustedSignal);
-    res.status(200).json({ message: 'Data received successfully', data: signal });
+    const nextSignal = Workflow.process(adjustedSignal);
+    res.status(200).json({ nextSignal});
 });
 
 app.listen(port, () => {
