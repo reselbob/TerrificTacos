@@ -41,12 +41,12 @@ app.listen(port, () => {
 });
 
 function persistSignal(signal: ISignal): void {
-    const eventsFileSpec = path.join(__dirname, '..', 'data',"events.log");
+    const signalsFileSpec = path.join(__dirname, '..', 'data',"signals.log");
 
-    if (!fs.existsSync(path.dirname(eventsFileSpec))) {
-        fs.mkdirSync(path.dirname(eventsFileSpec), { recursive: true });
+    if (!fs.existsSync(path.dirname(signalsFileSpec))) {
+        fs.mkdirSync(path.dirname(signalsFileSpec), { recursive: true });
     }
-    fs.appendFile(eventsFileSpec, `${JSON.stringify(signal)}\n`, (err) => {
+    fs.appendFile(signalsFileSpec, `${JSON.stringify(signal)}\n`, (err) => {
         if (err) {
             logger.error('Error appending to file:', err);
         }

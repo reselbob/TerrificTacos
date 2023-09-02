@@ -4,14 +4,14 @@ import path from "path";
 import {ISignal} from "./model/ISignal";
 import {Workflow} from "./Workflow";
 
-// get the event log, convert so signal and add to array
+// get the signal log, convert so signal and add to array
 
-const events: Array<ISignal> = new Array<ISignal>();
+const signals: Array<ISignal> = new Array<ISignal>();
 
-const eventsFileSpec = path.join(__dirname, '..', 'data',"events.log");
+const signalsFileSpec = path.join(__dirname, '..', 'data',"signals.log");
 
 // Create a readable stream for the file
-const fileStream = fs.createReadStream(eventsFileSpec);
+const fileStream = fs.createReadStream(signalsFileSpec);
 
 // Create an interface for reading lines
 const rl = readline.createInterface({
@@ -26,7 +26,7 @@ rl.on('line', (line) => {
     try {
         // Parse each line as a JSON object and push it to the array
         const jsonObject = JSON.parse(line);
-        events.push(jsonObject);
+        signals.push(jsonObject);
     } catch (error) {
         console.error(`Error parsing JSON: ${error}`);
     }
@@ -34,7 +34,7 @@ rl.on('line', (line) => {
 
 // Event handler for when the file has been fully read
 rl.on('close', () => {
-    events.forEach(event => {
-        Workflow.process(event);
+    signals.forEach(signal => {
+        Workflow.process(signal);
     })
 });

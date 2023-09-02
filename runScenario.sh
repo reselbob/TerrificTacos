@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Deleting the old event.log.\n"
-rm -rf /data/events.log
+rm -rf /data/signals.log
 
 echo "Spinning up web server.\n"
 ts-node src/WebServer.ts &
