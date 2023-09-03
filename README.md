@@ -17,7 +17,7 @@ sh runScenario.sh
 
 # Understanding the use case and architecture
 
-The use case that this project emulates is one in which a restaurant chain processes orders for each unit in a centralized manner.
+The use case that this project emulates is one in which a restaurant chain processes orders for each unit in a centralized manner. The restaurant chain is called *Terrific Tacos*.
 
 The sequence of steps in the order process is:
 
