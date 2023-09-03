@@ -35,7 +35,7 @@ The illustration below describes the architecture and the signal dynamics.
 
 A [signal](./src/model/ISignal.ts) that describes an [Order](./src/model/Order.ts) is passed to a component called a [WorkflowController](./src/WorkflowController.ts). The signal has a property called `name` which indicates the step to which the signal applies.
 
-The WorkflowController passes the signal onto the system's [WebServer](./src/WebServer.ts) . The WebServer passes the signal on to a component called a [Workflow](./src/Workflow.ts). The workflow has the logic to process the Workflow step according the `name` property of the signal. The following is an example of the signal that starts the Workflow process. Notice that the value of the `name` property of the signal is `orderSubmitted`.
+The WorkflowController passes the signal onto the system's [WebServer](./src/WebServer.ts). The WebServer passes the signal on to a component called a [Workflow](./src/Workflow.ts). The Workflow processes the Workflow steps according to the `name` property of the signal. The following is an example of the signal that starts the Workflow process. Notice that the value of the `name` property of the signal is `orderSubmitted`.
 
 
 ```json
@@ -72,7 +72,7 @@ The WorkflowController passes the signal onto the system's [WebServer](./src/Web
 }
 ```
 
-The [Workflow](./src/Workflow.ts) has a set of handler functions that correspond to the various signals. A handler function takes a signal as a parameter. When a handler completes is processing, it returns the next signal to be used in the workflow process. This is very similar to the use of  [HATEOAS](https://en.wikipedia.org/wiki/HATEOAS) (Hypertext as the Engine of Application State) in a RESTful API, in that the `nextSignal` response makes the workflow self-describing in terms of how the workflow progresses.
+The [Workflow](./src/Workflow.ts) has a set of [handler functions](https://github.com/reselbob/TerrificTacos/blob/ba8303b83f4ccdf806b1a766e5069b46f7bafa7d/src/Workflow.ts#L5) that correspond to the various signals. A handler function takes a signal as a parameter. When a handler completes is processing, it returns the next signal to be used in the workflow process. This is very similar to the use of  [HATEOAS](https://en.wikipedia.org/wiki/HATEOAS) (Hypertext as the Engine of Application State) in a RESTful API, in that the `nextSignal` response makes the workflow self-describing in terms of how the workflow progresses.
 
 The returned `nextSignal` is then returned by the WebController to the WebServer. The WebServer returns the `nextSignal` to the calling request as an HTTP response. The `nextSignal` can then be resubmitted to the WebServer to continue the logic of the workflow process.
 
