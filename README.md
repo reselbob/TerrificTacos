@@ -35,6 +35,8 @@ The sequence of steps in the order process is:
 - `paymentComplete`
 - `orderClosed`
 
+Steps are instigated via signals (a.k.a. *events*) submitted to the WebServer which is acting as a very primitive message queue.
+
 # Understanding the  architecture
 
 The illustration below describes the architecture and the signal dynamics.
