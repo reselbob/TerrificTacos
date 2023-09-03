@@ -3,7 +3,7 @@ A project, written in TypeScript, demonstrates the concepts behind event sourcin
 
 Event sourcing is a software architectural pattern that is particularly appropriate to use in the context of complex and distributed systems. The pattern captures and stores all changes to an application's state as a sequence of immutable events.
 
-- [Installing the packages](#installing-the-packages)
+- [Installing Node.JS, TypeScript and the dependency packages](#installing-nodejs-typescript-and-the-dependency-packages)
 - [Running the project](h#running-the-project)
 - [Be advised](#be-advised)
 - [Understanding the use case](#understanding-the-use-case)
@@ -14,9 +14,11 @@ Event sourcing is a software architectural pattern that is particularly appropri
 
 The project requires a computer or virtual machine that has Node.JS 18+ and TypeScript to be installed.
 
+## Install Node.JS
+
 Instructions for installing Node.JS are [here](https://nodejs.dev/en/learn/how-to-install-nodejs/).
 
-Install TypeScript
+## Install TypeScript
 
 ```bash
 # Locally in your project.
@@ -28,6 +30,8 @@ npm install -g ts-node
 # Depending on configuration, you may also need these
 npm install -D tslib @types/node
 ```
+
+## Install the dependency packages 
 
 ```bash
 npm install
