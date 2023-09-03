@@ -80,13 +80,13 @@ The [RestaurantManager](./src/RestaurantManager.ts) component does the work of c
 
 # Supporting event sourcing
 
-As mentioned at the beginning of this readme, the purpose of the use case is to demonstrate [event sourcing](https://en.wikipedia.org/wiki/Domain-driven_design#Event_sourcing). Thus, this project is dividing into two parts. The first part is the once described above which has to do process execution using the WebServer, WorkflowController and Workflow.
+As mentioned at the beginning of this readme, the purpose of the use case is to demonstrate [event sourcing](https://en.wikipedia.org/wiki/Domain-driven_design#Event_sourcing). Thus, this project is dividing into two parts. The first part is the one described above which has to do with executing the use case process using the WebServer, WorkflowController and Workflow.
 
-The second part pertains to replaying the signals (a.k.a *events*) that instigated the various steps in the workflow. Replay is a core feature for systems that use event sourcing. In a system that supports event sourcing, events are stored in some sort of data storage mechanism. That data represents the state of the system over its lifetime and at any point in the system's operation.
+The second part pertains to replaying the signals (a.k.a *events*) that instigate the various steps in the workflow. Replay is a core feature for systems that use event sourcing. In a system that supports event sourcing, events are stored in some sort of data storage mechanism. That data represents the state of the system over its lifetime and at any point in the system's operation.
 
-Signal replay is conducted by the [WorkflowPlayer](/src/WorkflowPlayer.ts). The WorkflowPlayer retrieves the signals that have been recorded and stored by the WebServer in a file named `signals.log`. The file `signals.log` is in the `./data` directory which is created on the fly when the WebServer starts receiving signals. (The WebServer is the component is the sole component that does the work of storing signal data in the `signals.log` file.)
+Signal replay is conducted by the [WorkflowPlayer](/src/WorkflowPlayer.ts). The WorkflowPlayer retrieves the signals that have been recorded and stored by the WebServer in a file named `signals.log`. The file `signals.log` is in the `./data` directory which is created on the fly when the WebServer starts receiving signals. (The WebServer is the sole component that does the work of storing signal data in the `signals.log` file.)
 
-The WorkflowPlayer component retrieves the data stored in the `signals.log` file. The WorkflowPlayer then parses the data in the file into signals. These signals are then submitted to the `Workflow` component. Submitting the signals to `Workflow` replicates the `Workflow`s behavior.
+The WorkflowPlayer component retrieves the data stored in the `signals.log` file. The WorkflowPlayer then parses the data in the file into signals. These signals are then submitted to the `Workflow` component. Submitting the signals to the `Workflow` replicates the `Workflow`s behavior.
 
 # Be advised
 
