@@ -1,7 +1,12 @@
-import {ISignal} from "./model/ISignal";
 import {logger} from "./logger"
+import {ISignal} from "./model/ISignal";
 import {OrderItem} from "./model/OrderItem";
 
+/**
+ * This class executes a workflow according to received
+ * signals. Also, the class has the handler functions for
+ * each signal.
+ */
 export class Workflow {
     public static process(signal: ISignal): any {
         switch (signal.name.toUpperCase()) {

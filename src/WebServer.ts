@@ -8,6 +8,11 @@ import { v4 as uuidv4 } from 'uuid';
 import path from "path";
 import fs from "fs";
 
+/**
+ * The WebServer that accpets signals to pass onto the
+ * Workflow controller
+ */
+
 const d = path.join(__dirname, '.env');
 dotenv.config({path: d});
 

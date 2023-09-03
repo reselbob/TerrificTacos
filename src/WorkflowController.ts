@@ -1,11 +1,15 @@
 import path from "path";
 import * as dotenv from "dotenv";
-import {ISignal} from "./model/ISignal";
 import axios from "axios";
-import {Customer} from "./model/Customer";
 import {Order} from "./model/Order";
 import {IWorkflowConfig} from "./model/IWorkflowConfig";
+import {ISignal} from "./model/ISignal";
 
+/**
+ * This class passes signals onto the WebServer
+ * create signals using data provided by the IWorkflowConfig
+ * parameter of the class's constructor
+ */
 export class WorkflowController{
     private readonly targetUrl: string;
     private readonly order: Order;

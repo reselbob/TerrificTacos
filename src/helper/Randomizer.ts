@@ -5,6 +5,11 @@ import {CreditCard} from "../model/CreditCard";
 import {OrderItem} from "../model/OrderItem";
 import {ISignal} from "../model/ISignal";
 
+/**
+ * This class is a helper that assigned random value to the properties
+ * of the variety of objects used in this project.
+ */
+
 export class Randomizer {
     public static getCustomer(): Customer {
         const firstName = faker.name.firstName();
