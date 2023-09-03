@@ -12,6 +12,8 @@ Event sourcing is a software architectural pattern that is particularly appropri
 
 # Installing the packages
 
+The project requires a computer or virtual machine that has Node.JS 18+ installed.
+
 ```bash
 npm install
 ```
