@@ -10,11 +10,13 @@ Event sourcing is a software architectural pattern that is particularly appropri
 - [Understanding the architecture](#understanding-the-architecture)
 - [Supporting event sourcing](#supporting-event-sourcing)
 
-# Installing the packages
+# Installing Node.JS, TypeScript and the dependency packages
 
-The project requires a computer or virtual machine that has Node.JS 18+ installed.
+The project requires a computer or virtual machine that has Node.JS 18+ and TypeScript to be installed.
 
-Install node
+Instructions for installing Node.JS are [here](https://nodejs.dev/en/learn/how-to-install-nodejs/).
+
+Install TypeScript
 
 ```bash
 # Locally in your project.
