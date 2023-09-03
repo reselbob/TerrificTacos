@@ -1,5 +1,7 @@
 # Terrific Tacos
-A project, written in TypeScript, demonstrates the concepts behind event sourcing. 
+A project, written in TypeScript, demonstrates the concepts behind event sourcing.
+
+Event sourcing is a software architectural pattern that is particularly appropriate to use in the context of complex and distributed systems. Tje pattern captures and stores all changes to an application's state as a sequence of immutable events.
 
 # Install the packages
 
