@@ -11,17 +11,19 @@ npm install
 
 # Running the project
 
-To run the bash script that executes all aspects of the Event Sourcing demonstration, execute the following command:
+To run the bash script that executes the Event Sourcing demonstration project, execute the following command:
 
 ```bash
 sh runScenario.sh
 ```
 
+The bash script sends signals (a.k.a. *events*) into the project's web server. A signal represents a step in the demonstration application's workflow process. The web server stores the signal and forwards it onto the workflow which executes the step corresponding to the submitted signal. Also, after the bash script is done submitting signals to the workflow, the script then replays the workflow by resubmitting the signals orginally stored by the web server.
+
 # Be advised
 
-This project is a very simple demonstration of the essentials of event sourcing. Production grade support for event sourcing is technologically complex. This project does not address any of the complexities such as coordinating replay behavior with ongoing signal storage and processing. Also, the project does not address the complexities of supporting concurrency when millions of workflows are executing.
+This project is a very simple demonstration of the essentials of event sourcing. Production grade support for event sourcing requires complex technology that goes well beyond the basics used in this demonstration project. This project does not address complexities such as coordinating replay behavior with ongoing signal storage and processing or supporting concurrency when millions of workflows are executing.
 
-Typically, systems that support event sourcing at a production level use some type of message broker as well as a framework to support concurrency. Good examples of production grade technologies that support event sourcing at scale are [Temporal](https://docs.temporal.io/) and [Akka](https://doc.akka.io/docs/akka/current/typed/persistence.html) for Java and Scala.
+Typically, systems that support event sourcing at a production level use some type of message broker to manage messages as well as a framework to support concurrency. [Temporal](https://docs.temporal.io/) and [Akka](https://doc.akka.io/docs/akka/current/typed/persistence.html) for Java and Scala are good examples of production grade technologies that support event sourcing at scale.
 
 # Understanding the use case
 
