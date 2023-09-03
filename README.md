@@ -29,12 +29,11 @@ The sequence of steps in the order process is:
 - `paymentComplete`
 - `orderClosed`
 
-
-A [signal](./src/model/ISignal.ts) that describes an [Order](./src/model/Order.ts) is passed to a component called a [WorkflowController](./src/WorkflowController.ts). The signal has a property called `name` which indicates the step to which the signal applies.
-
 The illustration below describes the architecture and the signal dynamics.
 
 ![Architecture](./images/eventsourcing-arch-01.png)
+
+A [signal](./src/model/ISignal.ts) that describes an [Order](./src/model/Order.ts) is passed to a component called a [WorkflowController](./src/WorkflowController.ts). The signal has a property called `name` which indicates the step to which the signal applies.
 
 The WorkflowController passes the signal onto the system's [WebServer](./src/WebServer.ts) . The WebServer passes the signal on to a component called a [Workflow](./src/Workflow.ts). The workflow has the logic to process the Workflow step according the `name` property of the signal. The following is an example of the signal that starts the Workflow process. Notice that the value of the `name` property of the signal is `orderSubmitted`.
 
