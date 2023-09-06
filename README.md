@@ -42,14 +42,11 @@ Run the following bash script to fire off the RestaurantManager to create 3 orde
 sh runOrders.sh
 ```
 
-Run the following bash script to repay the order created previously:
+Run the following bash script to replay the order created previously:
 
 ```bash
 sh replay.sh
 ```
-
-
-The bash script sends signals (a.k.a. *events*) into the project's web server. A signal represents a step in the demonstration application's workflow process. The web server stores the signal and forwards it onto the workflow which executes the step corresponding to the submitted signal. Also, after the bash script is done submitting signals to the workflow, the script then replays the workflow by resubmitting the signals originally stored by the web server.
 
 # Be advised
 
