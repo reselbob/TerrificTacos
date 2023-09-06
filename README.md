@@ -12,7 +12,7 @@ Event sourcing is a software architectural pattern that is particularly appropri
 
 # Installing Node.JS, TypeScript and the dependency packages
 
-The project requires a computer or virtual machine that has Node.JS 18+ and TypeScript to be installed.
+The project requires a computer or virtual machine that has Node.JS 18+ and TypeScript installed.
 
 ## Install Node.JS
 
@@ -36,13 +36,20 @@ npm install
 
 # Running the project
 
-To run the bash script that executes the Event Sourcing demonstration project, run the following command:
+Run the following bash script to fire off the RestaurantManager to create 3 orders each for a different restaurant:
 
 ```bash
-sh runScenario.sh
+sh runOrders.sh
 ```
 
-The bash script sends signals (a.k.a. *events*) into the project's web server. A signal represents a step in the demonstration application's workflow process. The web server stores the signal and forwards it onto the workflow which executes the step corresponding to the submitted signal. Also, after the bash script is done submitting signals to the workflow, the script then replays the workflow by resubmitting the signals orginally stored by the web server.
+Run the following bash script to repay the order created previously:
+
+```bash
+sh replay.sh
+```
+
+
+The bash script sends signals (a.k.a. *events*) into the project's web server. A signal represents a step in the demonstration application's workflow process. The web server stores the signal and forwards it onto the workflow which executes the step corresponding to the submitted signal. Also, after the bash script is done submitting signals to the workflow, the script then replays the workflow by resubmitting the signals originally stored by the web server.
 
 # Be advised
 
