@@ -36,7 +36,7 @@ npm install
 
 # Running the project
 
-Run the following bash script to fire off the RestaurantManager to create 3 orders each for a different restaurant:
+Run the following bash script to fire off the RestaurantManager to create 3 orders, each for a different restaurant:
 
 ```bash
 sh runOrders.sh
