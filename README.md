@@ -21,14 +21,11 @@ Instructions for installing Node.JS are [here](https://nodejs.dev/en/learn/how-t
 ## Install TypeScript
 
 ```bash
-# Locally in your project.
-npm install -D typescript
-npm install -D ts-node
-# Or globally with TypeScript.
-npm install -g typescript
-npm install -g ts-node
+# Install globally with TypeScript.
+sudo npm install -g typescript
+sudo npm install -g ts-node
 # Depending on configuration, you may also need these
-npm install -D tslib @types/node
+npm install tslib @types/node --save-dev
 ```
 
 ## Install the dependency packages 
