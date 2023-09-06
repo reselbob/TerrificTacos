@@ -4,7 +4,7 @@ A project, written in TypeScript, demonstrates the concepts behind event sourcin
 Event sourcing is a software architectural pattern that is particularly appropriate to use in the context of complex and distributed systems. The pattern captures and stores all changes to an application's state as a sequence of immutable events.
 
 - [Installing Node.JS, TypeScript and the dependency packages](#installing-nodejs-typescript-and-the-dependency-packages)
-- [Running the project](h#running-the-project)
+- [Running the project](#running-the-project)
 - [Be advised](#be-advised)
 - [Understanding the use case](#understanding-the-use-case)
 - [Understanding the architecture](#understanding-the-architecture)
