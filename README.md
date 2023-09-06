@@ -36,7 +36,7 @@ npm install
 
 # Running the project
 
-To run the bash script that executes the Event Sourcing demonstration project, execute the following command:
+To run the bash script that executes the Event Sourcing demonstration project, run the following command:
 
 ```bash
 sh runScenario.sh
