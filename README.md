@@ -119,7 +119,7 @@ The [RestaurantManager](./src/RestaurantManager.ts) component does the work of c
 
 # Supporting event sourcing
 
-As mentioned at the beginning of this readme, the purpose of the use case is to demonstrate [event sourcing](https://en.wikipedia.org/wiki/Domain-driven_design#Event_sourcing). Thus, this project is dividing into two parts. The first part is the one described above which has to do with executing the use case process using the WebServer, WorkflowController and Workflow.
+As mentioned at the beginning of this readme, the purpose of the Terrific Tacos use case is to demonstrate [event sourcing](https://en.wikipedia.org/wiki/Domain-driven_design#Event_sourcing). Thus, exercising this project is divided into two parts. The first part is the one described above which has to do with executing the use case process using the WebServer, WorkflowController and Workflow.
 
 The second part pertains to replaying the signals (a.k.a *events*) that instigate the various steps in the workflow. Replay is a core feature for systems that use event sourcing. In a system that supports event sourcing, events are stored in some sort of data storage mechanism. That data represents the state of the system over its lifetime and at any point in the system's operation.
 
