@@ -16,7 +16,15 @@ The project requires a computer or virtual machine that has Node.JS 18+ and Type
 
 ## Install Node.JS
 
-Instructions for installing Node.JS are [here](https://nodejs.dev/en/learn/how-to-install-nodejs/).
+The following are the installation instructions for Ubuntu.
+
+```
+sudo apt update -y
+
+curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+
+sudo apt-get install -y nodejs
+```
 
 ## Install TypeScript
 
